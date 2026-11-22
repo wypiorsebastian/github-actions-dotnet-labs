@@ -6,3 +6,4 @@ app.MapGet("/", () => "Hello World!");
 app.MapGet("/health", () => TypedResults.Ok(new { status = "ok" }));
 
 app.Run();
+public partial class Program { }
