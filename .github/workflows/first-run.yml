@@ -28,3 +28,9 @@ jobs:
           echo "Git HEAD:  $(git rev-parse HEAD)"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           test -f src/Lab.Api/Lab.Api.csproj
+
+      - name: Set up .NET 10 SDK
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+          dotnet-quality: 'ga'
