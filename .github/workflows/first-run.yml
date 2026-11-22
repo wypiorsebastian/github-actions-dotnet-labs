@@ -1,0 +1,27 @@
+name: First run
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the triggering commit
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Verify the checkout
+        shell: bash
+        run: |
+          echo "Event:     $GITHUB_EVENT_NAME"
+          echo "Ref:       $GITHUB_REF"
+          echo "Event SHA: $GITHUB_SHA"
+          echo "Git HEAD:  $(git rev-parse HEAD)"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test -f src/Lab.Api/Lab.Api.csproj
