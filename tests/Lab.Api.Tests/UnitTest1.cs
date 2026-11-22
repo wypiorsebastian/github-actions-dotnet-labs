@@ -16,8 +16,10 @@ public class HealthTests
         using var response = await client.GetAsync("/health");
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        //Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
         var body = await response.Content.ReadFromJsonAsync<JsonElement>();
         Assert.Equal("ok", body.GetProperty("status").GetString());
+
     }
 }
