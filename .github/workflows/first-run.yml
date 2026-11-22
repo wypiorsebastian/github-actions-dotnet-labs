@@ -34,3 +34,6 @@ jobs:
         with:
           dotnet-version: '10.0.x'
           dotnet-quality: 'ga'
+
+      - name: Restore NuGet dependencies
+        run: dotnet restore
